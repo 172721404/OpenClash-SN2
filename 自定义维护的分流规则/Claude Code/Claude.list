@@ -1,0 +1,26 @@
+# Anthropic & Claude Rules (Update: 2026-03-31)
+# Compatible with Claude Code, Claude.ai, Claude API, MCP Client
+
+# --- Core Services & API ---
+DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,claude.ai
+DOMAIN-SUFFIX,clau.de
+DOMAIN-SUFFIX,claude.com
+DOMAIN-SUFFIX,anthropic.cloud
+DOMAIN,api.anthropic.com
+DOMAIN,api-eu.anthropic.com
+
+# --- Resources & Artifacts ---
+DOMAIN-SUFFIX,claudeusercontent.com
+DOMAIN-SUFFIX,claudemcpclient.com
+DOMAIN,cdn.usefathom.com
+
+# --- 2026 New: Telemetry & Feature Gates (Critical for Avoid Degraded Mode) ---
+DOMAIN-SUFFIX,statsig.com
+DOMAIN-SUFFIX,featuregates.org
+DOMAIN-SUFFIX,sentry.io
+DOMAIN-KEYWORD,anthropic
+DOMAIN-KEYWORD,claude
+
+# --- Static Resources & AWS S3 ---
+DOMAIN,anthropic-static.s3.amazonaws.com
