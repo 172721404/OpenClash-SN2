@@ -10,6 +10,8 @@
 
 **本项目参看了一个`YouTube`的专业博主---[安格视界](https://github.com/liandu2024/little/blob/main/yaml/clash-fallback-std-cn-one.yaml)**
 
+[**25.4K分流规则**](https://github.com/blackmatrix7/ios_rule_script)
+
 [**在线 Markdown 编辑器**](https://markdown.lovejade.cn/)
 
 ---
