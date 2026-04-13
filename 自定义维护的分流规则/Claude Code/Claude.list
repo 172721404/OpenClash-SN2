@@ -1,26 +1,47 @@
-# Anthropic & Claude Rules (Update: 2026-03-31)
-# Compatible with Claude Code, Claude.ai, Claude API, MCP Client
+# --- Claude & Anthropic 完整规则集 (2026.04 深度优化版) ---
+# 优先级建议：置于分流规则顶部
+# 兼容 OpenClash DOMAIN/DOMAIN-SUFFIX/DOMAIN-KEYWORD/GEOSITE 语法
 
-# --- Core Services & API ---
+# --- 核心域名 (Core Domains) ---
 DOMAIN-SUFFIX,anthropic.com
 DOMAIN-SUFFIX,claude.ai
-DOMAIN-SUFFIX,clau.de
 DOMAIN-SUFFIX,claude.com
+DOMAIN-SUFFIX,clau.de
 DOMAIN-SUFFIX,anthropic.cloud
+DOMAIN-SUFFIX,anthropic.io
+DOMAIN-SUFFIX,anthropic.dev
 DOMAIN,api.anthropic.com
 DOMAIN,api-eu.anthropic.com
+DOMAIN-SUFFIX,typeform.com
 
-# --- Resources & Artifacts ---
-DOMAIN-SUFFIX,claudeusercontent.com
+# --- 客户端与内容分发 (MCP & Artifacts & CDN) ---
 DOMAIN-SUFFIX,claudemcpclient.com
-DOMAIN,cdn.usefathom.com
+DOMAIN-SUFFIX,claudeusercontent.com
+DOMAIN,cdn.anthropic.com
+DOMAIN,anthropic.com.cdn.cloudflare.net
+DOMAIN,servd-anthropic-website.b-cdn.net
+DOMAIN,anthropic-static.s3.amazonaws.com
 
-# --- 2026 New: Telemetry & Feature Gates (Critical for Avoid Degraded Mode) ---
+# --- 认证与内容管理 (Auth & CMS) ---
+DOMAIN,anthropic.auth0.com
+DOMAIN,anthropic-com.ghost.io
+
+# --- 监控、遥测与功能开关 (Telemetry & Feature Gates) ---
+# 必须走代理，否则会导致功能受限或 IP 环境异常检测
 DOMAIN-SUFFIX,statsig.com
+DOMAIN-SUFFIX,statsigapi.net
 DOMAIN-SUFFIX,featuregates.org
+DOMAIN-SUFFIX,launchdarkly.com
 DOMAIN-SUFFIX,sentry.io
+DOMAIN-KEYWORD,datadog
+DOMAIN-KEYWORD,sentry
+DOMAIN-KEYWORD,sift
+
+# --- NTP 时区检测 (关键：防止时区泄露) ---
+# 确保 NTP 请求走代理以匹配节点出口时区
+GEOSITE,category-ntp
+
+# --- 兜底关键词与通配规则 ---
 DOMAIN-KEYWORD,anthropic
 DOMAIN-KEYWORD,claude
-
-# --- Static Resources & AWS S3 ---
-DOMAIN,anthropic-static.s3.amazonaws.com
+GEOSITE,anthropic
