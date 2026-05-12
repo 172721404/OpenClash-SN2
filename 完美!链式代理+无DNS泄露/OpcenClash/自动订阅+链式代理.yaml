@@ -53,6 +53,29 @@ proxies:
     udp: true
     dialer-proxy: 新加坡-链式前置    
     
+    
+# 链式服务器配置 亲测3X-UI服务端 只有选择这样的方式才能链接成功
+  - name: 链式落地-美国
+    type: vless
+    server: 服务器地址
+    port: 443
+    uuid: 451af2d6-6d95-4b7f-a992-83aa5f032e8e
+    udp: true
+    tls: true
+    flow: xtls-rprx-vision
+    servername: www.oracle.com
+    network: tcp
+    reality-opts:
+      public-key: 7UHIh0CcKC8zxBpYiAE8RACOHwU_jmH1Bmn7VnFNMEw
+      # 修正点：确保 short-id 是偶数位且格式正确
+      short-id: "36ebcb3375d2ec" 
+    client-fingerprint: chrome
+    # 增加该项，防止因证书/SNI 不匹配导致的初始化失败
+    skip-cert-verify: true 
+    mtu: 1280
+    dialer-proxy: 美国-链式前置
+
+
   
 
 # ========================
@@ -126,6 +149,16 @@ proxy-groups:
     proxies:
       - 新加坡-自动 
       - 新加坡-手动
+
+  # 链式代理-前置-新加坡
+  - name: 美国-链式前置
+    type: fallback
+    interval: 120
+    lazy: false
+    proxies:
+      - 所有-自动 
+      - 所有-手动
+
 
 
   - name: 所有-手动
@@ -318,8 +351,8 @@ rules:
   - RULE-SET,China / Domain,国内
   - RULE-SET,China / IP,国内,no-resolve
   - RULE-SET,Private / Domain,国内
-  - DOMAIN,cdn.metaglide.org,DIRECT   #机场落地更新连接兜底方便电脑访问检查连接是否有效
-  - DOMAIN,api-huacloud.dev,DIRECT    #机场落地更新连接兜底方便电脑访问检查连接是否有效
+  - DOMAIN-SUFFIX,cdn.metaglide.org,DIRECT   #机场落地更新连接兜底方便电脑访问检查连接是否有效
+  - DOMAIN-SUFFIX,api-huacloud.dev,DIRECT    #机场落地更新连接兜底方便电脑访问检查连接是否有效
   - MATCH,其他
 
 # ========================
