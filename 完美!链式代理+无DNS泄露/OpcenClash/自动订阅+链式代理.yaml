@@ -103,11 +103,19 @@ default: &default
     - 直连
     - 链式落地-日本     #链式落地分组显示
     - 链式落地-新加坡   #链式落地分组显示
+    - 链式落地-美国   #链式落地分组显示
 
 proxy-groups:
 
   # 业务分流组
   - {name: 人工智能, <<: *default}
+    # type: select
+    # proxies:
+      # - 拒绝
+      # - 1024pr链式落地-新加坡
+      # - 链式落地-马来西亚
+      # - 链式落地-美国 
+      # 上面是AI防止封号的配置，只允许走链式代理的链接
   - {name: 流媒体, <<: *default}
   - {name: 谷歌, <<: *default}  
   - {name: 微软, <<: *default}
@@ -150,7 +158,8 @@ proxy-groups:
       - 新加坡-自动 
       - 新加坡-手动
 
-  # 链式代理-前置-新加坡
+
+  # 链式代理-前置-美国
   - name: 美国-链式前置
     type: fallback
     interval: 120
