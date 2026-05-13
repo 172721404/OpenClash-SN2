@@ -81,7 +81,7 @@ proxies:
 # ========================
 # 策略组定义
 # ========================
-default: &default
+default: &default   # YAML 语法里锚点高级用法,此处理解把下面的列表全部存到 default 变量里 然后在proxy-groups的策略组里直接调用 (粘贴)
   type: select
   proxies:
     - 所有-自动
